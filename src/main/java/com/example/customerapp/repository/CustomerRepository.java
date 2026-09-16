@@ -1,24 +1,10 @@
-
 package com.example.customerapp.repository;
 
-import org.springframework.stereotype.Repository;
+import org.springframework.data.jpa.repository.JpaRepository;
 
 import com.example.customerapp.customer.Customer;
 
-@Repository
-public class CustomerRepository {
-    
-    public Customer findById(int id){
-        
+public interface CustomerRepository
+        extends JpaRepository<Customer, Integer> {
 
-    if(id == 1){
-        return new Customer(
-            1,
-            "Ian",
-            "Savings"
-        );
-    }
-
-    return null;
-   }
 }
