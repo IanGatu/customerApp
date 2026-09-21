@@ -22,13 +22,12 @@ public class CustomerService {
     }
 
     public Customer getCustomer(int id) {
-         Customer customer=repository.findById(id);
-         if(customer==null){
-            throw new CustomerNotFoundException("customer not found,try another id");
-         }
-         emailService.sendEmail();
 
-         return customer;
-         
-    }
+    return repository.findById(id)
+            .orElseThrow(() ->
+                new CustomerNotFoundException(
+                    "Customer not found, try another id"
+                )
+            );
+}
 }
