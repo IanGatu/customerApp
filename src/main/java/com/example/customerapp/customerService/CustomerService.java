@@ -12,13 +12,13 @@ import com.example.customerapp.repository.CustomerRepository;
 @Service
 public class CustomerService {
     private final CustomerRepository repository;
-    private final EmailService emailService;
+    //private final EmailService emailService;
 
 
     // Constructor injection so Spring can inject the repository and email
     public CustomerService(CustomerRepository repository,EmailService emailService ) {
         this.repository = repository;
-        this.emailService=emailService;
+        //this.emailService=emailService;
     }
 
     public Customer getCustomer(int id) {
