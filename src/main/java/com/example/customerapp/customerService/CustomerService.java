@@ -22,7 +22,10 @@ public class CustomerService {
     }
 
     public Customer getCustomer(int id) {
-
+    
+     if (id <= 0) {
+        throw new IllegalArgumentException("Invalid ID");
+    }
     return repository.findById(id)
             .orElseThrow(() ->
                 new CustomerNotFoundException(
