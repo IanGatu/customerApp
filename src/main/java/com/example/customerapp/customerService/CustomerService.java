@@ -2,6 +2,7 @@
 package com.example.customerapp.customerService;
 
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.example.customerapp.customer.Customer;
 import com.example.customerapp.customernotfoundexception.CustomerNotFoundException;
@@ -32,5 +33,17 @@ public class CustomerService {
                     "Customer not found, try another id"
                 )
             );
-}
+    }
+    @Transactional
+   public Customer updateCustomer(int id, String newName) {
+    Customer customer = repository.findById(id)
+            .orElseThrow(() ->
+                new CustomerNotFoundException(
+                    "Customer not found"
+                ));
+
+    customer.setName(newName);
+
+    return customer;
+  }
 }
