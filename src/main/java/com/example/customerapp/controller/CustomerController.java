@@ -1,10 +1,13 @@
 package com.example.customerapp.controller;
 
-import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
-import com.example.customerapp.customerService.CustomerService;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
+
 import com.example.customerapp.customer.Customer;
+import com.example.customerapp.customerService.CustomerService;
 
 @RestController
 public class CustomerController {
@@ -18,5 +21,10 @@ public class CustomerController {
     @GetMapping("/customer/{id}")
     public Customer getCustomer(@PathVariable int id){
         return service.getCustomer(id); // Added return
+    }
+    @PutMapping("/customer/{id}")
+    public Customer updateCustomer(@PathVariable int id,  @RequestParam String name) {
+        return service.updateCustomer(id, name);
+        
     }
 }
