@@ -45,5 +45,10 @@ public class CustomerService {
     customer.setName(newName);
 
     return customer;
-  }
+   }
+
+   @Transactional 
+   public Customer createCustomer( Customer customer){
+     return repository.save(customer);
+   }
 }
