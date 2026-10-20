@@ -51,4 +51,15 @@ public class CustomerService {
    public Customer createCustomer( Customer customer){
      return repository.save(customer);
    }
+
+   @Transactional 
+   public void deleteCustomer( int id){
+     Customer customer = repository.findById(id)
+            .orElseThrow(() ->
+                new CustomerNotFoundException(
+                    "Customer not found"
+                ));
+    
+       repository.deleteById(id);
+   }
 }
