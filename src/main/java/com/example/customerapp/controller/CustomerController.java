@@ -13,6 +13,8 @@ import org.springframework.web.bind.annotation.RestController;
 import com.example.customerapp.customer.Customer;
 import com.example.customerapp.customerService.CustomerService;
 
+import jakarta.validation.Valid;
+
 @RestController
 public class CustomerController {
     private final CustomerService service;
@@ -33,7 +35,7 @@ public class CustomerController {
     }
 
     @PostMapping("/customer")
-    public Customer createCustomer(@RequestBody Customer customer) {
+    public Customer createCustomer(@Valid @RequestBody Customer customer) {
         return service.createCustomer(customer);
     }
 
