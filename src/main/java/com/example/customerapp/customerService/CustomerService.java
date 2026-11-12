@@ -36,6 +36,9 @@ public class CustomerService {
     }
     @Transactional
    public Customer updateCustomer(int id, String newName) {
+    if (id <= 0) {
+        throw new IllegalArgumentException("Invalid ID");
+    }
     Customer customer = repository.findById(id)
             .orElseThrow(() ->
                 new CustomerNotFoundException(
