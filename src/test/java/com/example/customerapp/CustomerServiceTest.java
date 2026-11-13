@@ -30,6 +30,7 @@ class CustomerServiceTest {
 
     //TESTS FOR GETCUSTOMER
 
+  
     @Test
     //testing if the getcustomer logic works correctly
     void testGetCustomer() {
@@ -74,7 +75,7 @@ class CustomerServiceTest {
 
     //Tests for CreateCustomer
     @Test
-void testCreateCustomer() {
+    void testCreateCustomer() {
 
     // Arrange
     Customer inputCustomer = new Customer();
@@ -116,6 +117,23 @@ void testUpdateCustomer(){
     //Assert
     assertEquals("grace", result.getName());
 
+}
+
+//Tests for dleteCustomer
+@Test 
+void testDeleteCustomer(){
+    //Arrange
+    Customer customer =
+            new Customer(5, "Ian", "savings");
+
+        when(repository.findById(5))
+            .thenReturn(Optional.of(customer));
+
+    //act
+  service.deleteCustomer(5);
+
+  //assert
+ verify(repository).deleteById(5);
 }
     
 }
